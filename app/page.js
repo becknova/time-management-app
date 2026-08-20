@@ -98,18 +98,24 @@ export default function Home() {
         Student Scheduler
       </h1>
 
-      {user ? (
-        <div className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400">
-          <span>Logged in as {user.email}</span>
-          <button onClick={handleLogout} className="underline">
-            Log out
-          </button>
-        </div>
-      ) : (
-        <Link href="/login" className="text-sm text-zinc-600 underline dark:text-zinc-400">
-          Log in to add tasks
+      <div className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400">
+        {user ? (
+          <>
+            <span>Logged in as {user.email}</span>
+            <button onClick={handleLogout} className="underline">
+              Log out
+            </button>
+          </>
+        ) : (
+          <Link href="/login" className="underline">
+            Log in to add tasks
+          </Link>
+        )}
+        <span aria-hidden="true">&middot;</span>
+        <Link href="/calendar" className="underline">
+          View calendar
         </Link>
-      )}
+      </div>
 
       <form
         onSubmit={handleSubmit}
